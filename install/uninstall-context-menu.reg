@@ -1,0 +1,31 @@
+Windows Registry Editor Version 5.00
+
+; ============================================
+; Folios Extractor - Context Menu Uninstallation
+; ============================================
+; Supprime l'option "Extraire avec Folios" du menu contextuel
+; ============================================
+
+; ZIP
+[-HKEY_CLASSES_ROOT\.zip\shell\FoliosExtract]
+
+; 7Z
+[-HKEY_CLASSES_ROOT\.7z\shell\FoliosExtract]
+
+; RAR
+[-HKEY_CLASSES_ROOT\.rar\shell\FoliosExtract]
+
+; TAR
+[-HKEY_CLASSES_ROOT\.tar\shell\FoliosExtract]
+
+; TAR.GZ
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.gz\shell\FoliosExtract]
+
+; TGZ
+[-HKEY_CLASSES_ROOT\.tgz\shell\FoliosExtract]
+
+; TAR.BZ2
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.bz2\shell\FoliosExtract]
+
+; TAR.XZ
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.xz\shell\FoliosExtract]

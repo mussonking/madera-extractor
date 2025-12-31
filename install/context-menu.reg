@@ -1,0 +1,74 @@
+Windows Registry Editor Version 5.00
+
+; ============================================
+; Folios Extractor - Context Menu Installation
+; ============================================
+; Ajoute l'option "Extraire avec Folios" au clic-droit sur les archives
+;
+; IMPORTANT: Modifier le chemin ci-dessous si FoliosExtractor.exe
+; n'est pas dans C:\Program Files\FoliosExtractor\
+; ============================================
+
+; ZIP
+[HKEY_CLASSES_ROOT\.zip\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\.zip\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; 7Z
+[HKEY_CLASSES_ROOT\.7z\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\.7z\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; RAR
+[HKEY_CLASSES_ROOT\.rar\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\.rar\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; TAR
+[HKEY_CLASSES_ROOT\.tar\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\.tar\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; TAR.GZ (via SystemFileAssociations car extension double)
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.gz\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.gz\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; TGZ
+[HKEY_CLASSES_ROOT\.tgz\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\.tgz\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; TAR.BZ2
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.bz2\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.bz2\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
+
+; TAR.XZ
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.xz\shell\FoliosExtract]
+@="Extraire avec Folios"
+"Icon"="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\",0"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.tar.xz\shell\FoliosExtract\command]
+@="\"C:\\Program Files\\FoliosExtractor\\FoliosExtractor.exe\" \"%1\""
