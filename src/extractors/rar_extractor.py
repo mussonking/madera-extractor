@@ -86,6 +86,7 @@ def extract_rar(archive_path: str, dest_folder: str) -> Tuple[bool, int, int]:
             cmd,
             capture_output=True,
             text=True,
+            timeout=300,
             creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0
         )
 

@@ -40,12 +40,15 @@ def extract_zip(archive_path: str, dest_folder: str) -> Tuple[bool, int, int]:
             # Extraire tous les fichiers
             for member in zf.infolist():
                 # Gérer l'encoding des noms de fichiers (UTF-8 ou CP437)
-                try:
-                    # Essayer d'abord avec l'encoding par défaut
-                    filename = member.filename
-                except UnicodeDecodeError:
-                    # Fallback sur CP437 pour les vieux ZIP Windows
-                    filename = member.filename.encode('cp437').decode('utf-8', errors='replace')
+                # python-zipfile fait déjà la conversion UTF-8 vers CP437,
+                # mais les noms avec des caractères non-ASCII peuvent être
+                # partiellement dégradés. On utilise le nom brut quand dispo.
+                filename = member.filename
+                if filename and hasattr(member, '_raw_filename'):
+                    try:
+                        filename = member._raw_filename.decode('utf-8', errors='replace')
+                    except Exception:
+                        pass  # Garder le nom décodé par zipfile
 
                 # Extraire le fichier
                 zf.extract(member, dest_folder)

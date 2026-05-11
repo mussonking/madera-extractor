@@ -2,3 +2,21 @@
 .next/
 dist/
 build/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts (déjà dans dist/ et build/ mais au cas où)
+*.log
+
+# UnRAR binaire (téléchargé pendant le build CI)
+# src/bin/UnRAR.exe
+.venv/

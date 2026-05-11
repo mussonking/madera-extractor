@@ -43,7 +43,7 @@ def log_success(archive_path: str, dest_folder: str, file_count: int = 0, total_
     """Log une extraction réussie."""
     size_mb = total_size / (1024 * 1024) if total_size > 0 else 0
     stats = f"{file_count} fichiers, {size_mb:.1f} MB" if file_count > 0 else ""
-    message = f"{archive_path} → {dest_folder}"
+    message = f"{archive_path} -> {dest_folder}"
     if stats:
         message += f" | {stats}"
     _write_log("SUCCESS", message)

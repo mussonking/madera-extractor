@@ -21,8 +21,8 @@ def _get_config_path() -> str:
     if getattr(sys, 'frozen', False):
         exe_dir = os.path.dirname(sys.executable)
     else:
-        # En développement, chercher à la racine du projet
-        exe_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        # En développement, chercher à la racine du projet (src/utils/ -> racine)
+        exe_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     return os.path.join(exe_dir, 'folios-extractor.conf')
 
