@@ -20,3 +20,6 @@ Thumbs.db
 # UnRAR binaire (téléchargé pendant le build CI)
 # src/bin/UnRAR.exe
 .venv/
+
+# Claude Code local config
+.claude/
