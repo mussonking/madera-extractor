@@ -1,0 +1,66 @@
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download UnRAR
+        run: |
+          curl -L -o unrar.exe https://www.rarlab.com/rar/unrar-x64-700.exe
+          mkdir -p src/bin
+          move unrar.exe src/bin/UnRAR.exe
+
+      - name: Run tests
+        run: |
+          python -m pytest tests/ -v
+
+      - name: Build executable
+        run: pyinstaller --clean build.spec
+
+      - name: Build installer
+        run: pyinstaller --clean build_installer.spec
+
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FoliosExtractor
+          path: dist/FoliosExtractor.exe
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FoliosExtractor-Installer
+          path: dist/Installer-FoliosExtractor.exe
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/FoliosExtractor.exe
+            dist/Installer-FoliosExtractor.exe
+            install/context-menu.reg
+            install/uninstall-context-menu.reg
+            folios-extractor.conf
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
